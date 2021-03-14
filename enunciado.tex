@@ -1,0 +1,158 @@
+\documentclass[letter, 11pt]{article}
+%% ================================
+%% Packages =======================
+\usepackage[utf8]{inputenc}      %%
+\usepackage[T1]{fontenc}         %%
+\usepackage{lmodern}             %%
+\usepackage[spanish]{babel}      %%
+\decimalpoint                    %%
+\usepackage{fullpage}            %%
+\usepackage{fancyhdr}            %%
+\usepackage{graphicx}            %%
+\usepackage{amsmath}             %%
+\usepackage{color}               %%
+\usepackage{mdframed}            %%
+\usepackage[colorlinks]{hyperref}%%
+%% ================================
+%% ================================
+
+%% ================================
+%% Page size/borders config =======
+\setlength{\oddsidemargin}{0in}  %%
+\setlength{\evensidemargin}{0in} %%
+\setlength{\marginparwidth}{0in} %%
+\setlength{\marginparsep}{0in}   %%
+\setlength{\voffset}{-0.5in}     %%
+\setlength{\hoffset}{0in}        %%
+\setlength{\topmargin}{0in}      %%
+\setlength{\headheight}{54pt}    %%
+\setlength{\headsep}{1em}        %%
+\setlength{\textheight}{8.5in}   %%
+\setlength{\footskip}{0.5in}     %%
+%% ================================
+%% ================================
+
+%% =============================================================
+%% Headers setup, environments, colors, etc.
+%%
+%% Header ------------------------------------------------------
+\fancypagestyle{firstpage}
+{
+  \fancyhf{}
+  \lhead{\includegraphics[height=4.5em]{LogoDFI.jpg}}
+  \rhead{FI3104-1 \semestre\\
+         Métodos Numéricos para la Ciencia e Ingeniería\\
+         Prof.: \profesor}
+  \fancyfoot[C]{\thepage}
+}
+
+\pagestyle{plain}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+%% -------------------------------------------------------------
+%% Environments -------------------------------------------------
+\newmdenv[
+  linecolor=gray,
+  fontcolor=gray,
+  linewidth=0.2em,
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  skipabove=\topsep
+  skipbelow=\topsep,
+]{ayuda}
+%% -------------------------------------------------------------
+%% Colors ------------------------------------------------------
+\definecolor{gray}{rgb}{0.5, 0.5, 0.5}
+%% -------------------------------------------------------------
+%% Aliases ------------------------------------------------------
+\newcommand{\scipy}{\texttt{scipy}}
+%% -------------------------------------------------------------
+%% =============================================================
+%% =============================================================================
+%% CONFIGURACION DEL DOCUMENTO =================================================
+%% Llenar con la información pertinente al curso y la tarea
+%%
+\newcommand{\tareanro}{XX}
+\newcommand{\fechaentrega}{XX/XX/XXXX XX:XX hrs}
+\newcommand{\semestre}{201XB}
+\newcommand{\profesor}{Valentino González}
+%% =============================================================================
+%% =============================================================================
+
+
+\begin{document}
+\thispagestyle{firstpage}
+
+\begin{center}
+  {\uppercase{\LARGE \bf Tarea \tareanro}}\\
+  Fecha de entrega: \fechaentrega
+\end{center}
+
+
+%% =============================================================================
+%% ENUNCIADO ===================================================================
+\noindent{\large \bf Problema}
+
+{\it Un problema común en estadística es el de calcular la función percentil,
+que corresponde a la inversa de la función distribución acumulada.}
+
+Supongamos que $x$ es una variable aleatoria, es decir, un número elegido al
+azar, pero siguiendo una distribución de probabilidad dada. En este caso
+asumiremos que la distribución de probabilidad de $x$ es gausiana con
+parámetros $\mu=0$ y $\sigma=1$. Esto significa que, al tomar un número de la
+distribución, la probabilidad de que ese número sea mayor que un determinado
+valor $a$, se puede calcular como:
+
+$$ p(x>a) = \int_{a}^{\infty} \frac{1}{\sqrt{2\pi}} \exp\left({\frac{-y^2}{2}}\right) dy $$
+
+A menudo, la pregunta que necesitamos responder es: ¿Qué valor de $a$ debemos
+escoger para asegurarnos de que una variable aleatoria sacada de dicha
+distribución no sea {\it casi nunca} mayor que $a$? Donde {\it casi nunca} en
+este caso significa, {\it menos del 5\% de las veces}.
+
+Este problema se puede plantear como la siguiente ecuación para $a$:
+
+\begin{equation}
+0.05 = \int_{a}^{\infty} \frac{1}{\sqrt{2\pi}} \exp\left({\frac{-y^2}{2}}\right) dy
+\end{equation}
+
+Resuelva la ecuación (1) numéricamente e interprete su resultado.
+
+\begin{ayuda}
+  Para calcular la integral deberá hacer un cambio de variable, se recomienda:
+
+  $$ u = 1/y$$
+\end{ayuda}
+
+%% FIN ENUNCIADO ===============================================================
+%% =============================================================================
+
+\vspace{1em}
+\noindent{\bf Otras instrucciones importantes.}
+\begin{itemize}
+
+    \item Utilice \texttt{git} durante el desarrollo de la tarea para mantener
+        un historial de los cambios realizados. La siguiente
+        \href{https://education.github.com/git-cheat-sheet-education.pdf}{cheat
+        sheet} le puede ser útil. Esto no será evaluado esta vez pero
+        evaluaremos el use efectivo de \texttt{git} en el futuro, así que
+        empiece a usarlo.
+
+    \item La tarea se entrega como un \texttt{push} simple a su repositorio
+        privado. El \texttt{push} debe incluir todos los códigos usados además
+        de su informe.
+
+    \item El informe debe ser entregado en formato \texttt{pdf}, este debe ser
+      claro sin información ni de más ni de menos. Esto es importante, no
+      escriba de más, esto no mejorara su nota sino que al contrario. 3 páginas
+      es un largo razonable para la presente tarea.  Asegúrese de utilizar
+      figuras efectivas y/o tablas para resumir sus resultados. Revise su
+      ortografía.
+
+    \item No olvide indicar su RUT en el informe.
+
+\end{itemize}
+
+
+\end{document}
